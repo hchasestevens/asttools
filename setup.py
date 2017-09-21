@@ -1,10 +1,10 @@
 from setuptools import setup
  
 setup(
-    name = 'asttools',
-    packages = [],
-    version = '0.0.0',
-    description = 'Tools for AST construction and manipulation',
+    name='asttools',
+    packages=['asttools'],
+    version='0.1.0',
+    description='Tools for AST construction and manipulation',
     license='MIT',
     author='H. Chase Stevens',
     author_email='chase@chasestevens.com',
