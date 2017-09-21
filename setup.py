@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='asttools',
     packages=['asttools'],
-    version='0.1.0',
+    version='0.1.1',
     description='Tools for AST construction and manipulation',
     license='MIT',
     author='H. Chase Stevens',
@@ -11,6 +11,7 @@ setup(
     url='https://github.com/hchasestevens/asttools',
     install_requires=[
         'astor',
+        'meta'
     ],
     entry_points={},
     keywords='ast asts syntax metaprogramming',

@@ -5,6 +5,7 @@ import inspect
 import functools
 
 import astor
+from meta.decompiler import decompile_func
 
 
 class NameReplacer(ast.NodeTransformer):
@@ -41,13 +42,21 @@ def get_source(fn):
     )
 
 
+def get_ast(fn):
+    # type: (Callable) -> ast.FunctionDef
+    """Return FunctionDef AST node for given function."""
+    try:
+        return ast.parse(get_source(fn)).body[0]
+    except IOError:
+        return decompile_func(fn)
+
+
 def quoted(fn):
     # type: (Callable) -> List[ast.AST]
     """
     Return the code literal represented in the function body.
     """
-    src = get_source(fn)
-    return ast.parse(src).body[0].body
+    return get_ast(fn).body
 
 
 def quoted_template(fn):
@@ -56,7 +65,7 @@ def quoted_template(fn):
     Return a function which, supplied with AST nodes, will
     populate and return the specified template body.
     """
-    fn_node = ast.parse(get_source(fn)).body[0]
+    fn_node = get_ast(fn)
     argnames = [
         name.id
         if hasattr(name, 'id')
