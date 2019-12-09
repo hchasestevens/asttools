@@ -56,3 +56,11 @@ class QuotationValidator(ast.NodeVisitor):
             cls.validate(template_nodes)
             return template_nodes
         return wrapper
+
+
+def get_ast_definitions(module_node, environment={}):
+    """Return definitions made within node."""
+    code = compile(module_node, filename='', mode='exec')
+    env = environment.copy()
+    exec(code, env)
+    return env
