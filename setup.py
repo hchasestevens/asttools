@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name='asttools',
     packages=['asttools'],
-    version='0.1.3',
+    version='0.1.4',
     description='Tools for AST construction and manipulation',
     license='MIT',
     author='H. Chase Stevens',

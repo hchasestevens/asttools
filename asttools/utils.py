@@ -2,6 +2,7 @@
 
 import ast
 import builtins
+import functools
 
 
 class QuotationValidator(ast.NodeVisitor):
